@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Una pregunta para ti</title>
+    <title>Oye Mish</title>
     <style>
       :root {
         --ribbon-color: #ff6f91; /* Un color rosa fuerte para el lazo */
@@ -162,16 +162,16 @@
         font-size: 10px;
         color: var(--text);
         border-radius: 20px;
-        transition: 0.5s ease;
+        opacity: 0; /* Ocultar el cuadro inicialmente */
+        visibility: hidden;
+        transition: opacity 0.5s ease, transform 0.5s ease;
         transition-delay: 1.2s;
         z-index: -1;
       }
       .text.active {
+        opacity: 1; /* Aparecer el cuadro con animación */
+        visibility: visible;
         transform: translateY(-240px);
-      }
-      .text.active2 {
-        top: 0;
-        transition-delay: 0.2s;
       }
     </style>
     <script type="module">
@@ -183,20 +183,18 @@
       const text = $("text");
 
       click.addEventListener("click", () => {
-        if (click.className === "click") {
+        if (!click.classList.contains("active")) {
           click.classList.add("active");
           giftBox.classList.add("active");
           giftContainer.classList.add("active");
           shadow.classList.add("active");
           text.classList.add("active");
-          text.classList.remove("active2");
         } else {
           click.classList.remove("active");
           giftBox.classList.remove("active");
           giftContainer.classList.remove("active");
           shadow.classList.remove("active");
           text.classList.remove("active");
-          text.classList.add("active2");
         }
       });
     </script>
@@ -209,7 +207,7 @@
       </div>
       <div class="text" id="text">
         <h1>Feliz 14 de Febrero Mish</h1>
-	<h1>Te quiero amigo❤️</h1>
+        <h1>Te quiero amigo❤️</h1>
       </div>
     </div>
   </body>
